@@ -40,6 +40,7 @@ public class UserController {
    *     "dateOfBirth": "2019-04-26T05:30:00",
    *     "phoneNumbers": ["1234567890"]
    *    }
+   *    --------------Avoid passing userId while requesting in the body-------------
    * ENDPOINT: localhost:8080/user_app/v1/users
    */
 
@@ -50,7 +51,7 @@ public class UserController {
 
     User savedUser = userService.createUser(user);
 
-    UserDTO savedUserDTO = POJOConvertor.covertUserEntityToDTO(user);
+    UserDTO savedUserDTO = POJOConvertor.covertUserEntityToDTO(savedUser);
 
     return new ResponseEntity(savedUserDTO , HttpStatus.CREATED);
   }
@@ -96,14 +97,14 @@ public class UserController {
    *
    *
    * PUT
-   *
+   * http://localhost:8080/user_app/v1/users
    * 127.0.0.1:8080/users_app/v1/users/{id}
    * Request body will be present {}
    * {
-   *     "userId": 1,
-   *     "firstName": "Vishwa",
-   *     "lastName": "Mohan",
-   *     "username": "VM_Admin1",
+   *     "userId": 3,
+   *     "firstName": "Safal-updated",
+   *     "lastName": "Patel-updated",
+   *     "username": "SP_13-updated",
    *     "password": "password",
    *     "dateOfBirth": "2019-04-26T05:30:00",
    *     "phoneNumbers": [
